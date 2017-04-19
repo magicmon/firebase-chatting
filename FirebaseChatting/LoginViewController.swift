@@ -49,7 +49,7 @@ extension LoginViewController {
                 return
             }
             
-            self.performSegue(withIdentifier: "LoginToChat", sender: "guest")
+            self.performSegue(withIdentifier: "LoginToChat", sender: FIRAuth.auth()?.currentUser?.uid ?? "guest")
         })
     }
     
@@ -69,10 +69,6 @@ extension LoginViewController {
             
             self?.performSegue(withIdentifier: "LoginToChat", sender: email)
         })
-    }
-    
-    @IBAction func googleDidTouch(_ sender: UIButton) {
-        
     }
 }
 
@@ -115,27 +111,7 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                 return
             }
             
-            guard let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil) else {
-                return
-            }
-            
-            graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-                if let error = error {
-                    self?.alert(error.localizedDescription)
-                    return
-                } else {
-                    print("\(result)")
-                    print("\(FBSDKProfile.current()?.name)")
-                    print("\(FBSDKProfile.current()?.userID)")
-                    
-                    guard let result = result as? Dictionary<String, AnyHashable> else {
-                        self?.performSegue(withIdentifier: "LoginToChat", sender: "guest")
-                        return
-                    }
-                    
-                    self?.performSegue(withIdentifier: "LoginToChat", sender: result["name"] ?? "guest")
-                }
-            })
+            self?.performSegue(withIdentifier: "LoginToChat", sender: FIRAuth.auth()?.currentUser?.displayName ?? "guest")
         }
     }
 }

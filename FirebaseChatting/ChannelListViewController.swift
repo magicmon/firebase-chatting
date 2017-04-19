@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 enum Section: Int {
     case createNewChannelSection = 0
@@ -137,5 +139,19 @@ extension ChannelListViewController {
             self.channels.append(Channel(id: snapshot.key, name: name))
             self.tableView.reloadData()
         })
+    }
+}
+
+extension ChannelListViewController {
+    @IBAction func logoutDidTouch() {
+        do {
+            try FIRAuth.auth()?.signOut()
+            
+            FBSDKLoginManager().logOut()
+            self.dismiss(animated: true, completion: nil)
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
 }
