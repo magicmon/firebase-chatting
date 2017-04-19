@@ -17,11 +17,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.magicmon.chattingsample</string>
+	<string>com.magicmon.chatting</string>
 	<key>PROJECT_ID</key>
-	<string>chatting-5191esample</string>
+	<string>chatting-5191e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>chatting-5191esample.appspot.com</string>
+	<string>chatting-5191e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>

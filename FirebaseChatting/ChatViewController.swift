@@ -33,7 +33,7 @@ final class ChatViewController: JSQMessagesViewController {
     var channelRef: FIRDatabaseReference?
     
     fileprivate lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
-    fileprivate lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://chatting-5191esample.appspot.com")
+    fileprivate lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://chatting-5191e.appspot.com")
     fileprivate lazy var userIsTypingRef: FIRDatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
     fileprivate lazy var usersTypingQuery: FIRDatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
     
