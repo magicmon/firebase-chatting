@@ -7,4 +7,6 @@ target 'FirebaseChatting' do
   pod 'Firebase/Database'
   pod 'Firebase/RemoteConfig'
   pod 'JSQMessagesViewController'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 end

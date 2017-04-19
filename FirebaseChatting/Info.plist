@@ -45,5 +45,30 @@
 	<string>usage for firebase</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>usage for firebase</string>
+    <key>FacebookAppID</key>
+    <string>117523405402619</string>
+    <key>FacebookDisplayName</key>
+    <string>FirebaseChat</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>firebasechat</string>
+                <string>fb117523405402619</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>

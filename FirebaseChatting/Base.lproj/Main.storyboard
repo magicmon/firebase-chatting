@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="FirebaseChatting" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aix-HS-gtV">
-                                <rect key="frame" x="168" y="617" width="38" height="30"/>
+                                <rect key="frame" x="168" y="620" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SfN-Ih-F9p"/>
@@ -47,16 +48,21 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEM-Cx-3Pq">
-                                <rect key="frame" x="166.5" y="579" width="41" height="30"/>
+                                <rect key="frame" x="166.5" y="582" width="41" height="30"/>
                                 <state key="normal" title="Guest"/>
                                 <connections>
                                     <action selector="guestDidTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K3o-VH-Wxw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hw8-T1-iTc" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="153.5" y="544" width="67" height="30"/>
+                                <state key="normal" title="Facebook"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Aix-HS-gtV" secondAttribute="centerY" multiplier="1.054" id="2Cp-Wm-UMg"/>
+                            <constraint firstItem="hw8-T1-iTc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0B5-AV-xe0"/>
+                            <constraint firstAttribute="bottom" secondItem="Aix-HS-gtV" secondAttribute="centerY" multiplier="1.05" id="2Cp-Wm-UMg"/>
                             <constraint firstItem="Igm-Ry-sbC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.18" id="4XH-t9-CUy"/>
                             <constraint firstItem="Aix-HS-gtV" firstAttribute="top" secondItem="TEM-Cx-3Pq" secondAttribute="bottom" constant="8" id="EnF-0e-bPK"/>
                             <constraint firstItem="TEM-Cx-3Pq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F2h-hJ-EKV"/>
@@ -66,12 +72,14 @@
                             <constraint firstItem="Igm-Ry-sbC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gAK-1v-piE"/>
                             <constraint firstAttribute="trailing" secondItem="Igm-Ry-sbC" secondAttribute="trailing" constant="16" id="hnB-6w-x2z"/>
                             <constraint firstItem="Igm-Ry-sbC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="mDf-yV-jzX"/>
+                            <constraint firstItem="TEM-Cx-3Pq" firstAttribute="top" secondItem="hw8-T1-iTc" secondAttribute="bottom" constant="8" id="maj-fB-6br"/>
                             <constraint firstItem="tr8-Yt-z1E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="oqh-jf-CsF"/>
                             <constraint firstAttribute="trailing" secondItem="tr8-Yt-z1E" secondAttribute="trailing" constant="16" id="qCA-cN-O4E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="Igm-Ry-sbC" id="rrj-fW-c1b"/>
+                        <outlet property="fbLogin" destination="hw8-T1-iTc" id="JbY-U0-yde"/>
                         <outlet property="passwordField" destination="tr8-Yt-z1E" id="5VX-sU-PiY"/>
                         <segue destination="TeC-Cd-mG8" kind="show" identifier="LoginToChat" id="hVj-XB-NLd"/>
                     </connections>
@@ -83,17 +91,17 @@
         <!--RW RIC-->
         <scene sceneID="iQQ-Pk-XOe">
             <objects>
-                <tableViewController id="rQc-zu-MSC" customClass="ChannelListViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rQc-zu-MSC" customClass="ChannelListViewController" customModule="FirebaseChatting" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GiR-Ea-Byt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewChannel" id="enp-3J-XT3" customClass="CreateChannelCell" customModule="Chatting" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewChannel" id="enp-3J-XT3" customClass="CreateChannelCell" customModule="FirebaseChatting" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="enp-3J-XT3" id="Zt1-2z-u98">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Create a New Channel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ody-wU-jEX">
@@ -158,7 +166,7 @@
         <!--Chat View Controller-->
         <scene sceneID="bjO-5w-kR6">
             <objects>
-                <viewController id="rze-0b-VVb" customClass="ChatViewController" customModule="Chatting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rze-0b-VVb" customClass="ChatViewController" customModule="FirebaseChatting" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dc4-E4-HeJ"/>
                         <viewControllerLayoutGuide type="bottom" id="7JG-oK-BJw"/>
